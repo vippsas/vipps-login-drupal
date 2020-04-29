@@ -1,0 +1,27 @@
+social_auth_vipps.redirect_to_vipps:
+  path: 'user/login/vipps'
+  defaults:
+    _controller: '\Drupal\social_auth_vipps\Controller\VippsAuthController::redirectToProvider'
+  requirements:
+    # Anonymous users can log in, but authenticated users can also associate a new provider.
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
+
+social_auth_vipps.callback:
+  path: '/vipps-login/continue-from-vipps' #TODO return later user/login/vipps/callback
+  defaults:
+    _controller: '\Drupal\social_auth_vipps\Controller\VippsAuthController::callback'
+  requirements:
+    # Anonymous users can log in, but authenticated users can also associate a new provider.
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
+
+social_auth_vipps.settings_form:
+  path: 'admin/config/social-api/social-auth/vipps'
+  defaults:
+    _title: 'Social Auth Vipps settings'
+    _form: '\Drupal\social_auth_vipps\Form\VippsAuthSettingsForm'
+  requirements:
+    _permission: 'administer social api authentication'

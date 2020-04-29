@@ -1,0 +1,22 @@
+{
+    "name": "drupal/social_auth_vipps",
+    "type": "drupal-module",
+    "description": "Social Auth integration for Vipps.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "homepage": "https://www.drupal.org/project/social_auth_vipps",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/social_auth_vipps",
+        "source": "http://cgit.drupalcode.org/social_auth_vipps"
+    },
+    "require": {
+        "drupal/social_auth": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Anton Mirzac",
+            "email": "anton@frontkom.com"
+        }
+    ]
+}

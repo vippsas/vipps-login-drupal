@@ -1,0 +1,6 @@
+services:
+  social_auth_vipps.manager:
+    class: Drupal\social_auth_vipps\VippsAuthManager
+    arguments:
+      - '@config.factory'
+      - '@logger.factory'

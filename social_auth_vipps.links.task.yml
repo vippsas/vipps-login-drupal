@@ -1,0 +1,4 @@
+social_auth_vipps.settings.tab:
+  title: 'Vipps'
+  route_name: social_auth_vipps.settings_form
+  base_route: social_auth.integrations
