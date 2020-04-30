@@ -44,7 +44,7 @@ INSTALLATION
    for further information.
 
  * A more comprehensive installation instruction for Drupal 8 can be found at
-   https://www.drupal.org/docs/8/modules/social-api/social-api-2x/social-auth-2x/social-auth-github-2x-installation//TODO
+   https://www.drupal.org/docs/8/modules/social-api/social-api-2x/social-auth-2x/social-auth-vipps-2x-installation
 
 
 CONFIGURATION
