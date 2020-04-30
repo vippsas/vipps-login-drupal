@@ -2,6 +2,7 @@
 
 namespace Drupal\social_auth_vipps\Provider;
 
+use Drupal\social_auth_vipps\Provider\Exception\EmailNotVerifiedException;
 use League\OAuth2\Client\Tool\ArrayAccessorTrait;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
@@ -40,7 +41,17 @@ class VippsResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->getValueByKey($this->response, 'id');
+        return $this->getValueByKey($this->response, 'sid');
+    }
+
+    /**
+     * Get resource owner sub
+     *
+     * @return string|null
+     */
+    public function getSub()
+    {
+        return $this->getValueByKey($this->response, 'sub');
     }
 
     /**
@@ -54,6 +65,16 @@ class VippsResourceOwner implements ResourceOwnerInterface
     }
 
     /**
+     * Get resource owner email verified
+     *
+     * @return string|null
+     */
+    public function emailVerified()
+    {
+        return boolval($this->getValueByKey($this->response, 'email_verified'));
+    }
+
+    /**
      * Get resource owner name
      *
      * @return string|null
@@ -64,25 +85,82 @@ class VippsResourceOwner implements ResourceOwnerInterface
     }
 
     /**
+     * Get resource owner first name
+     *
+     * @return string|null
+     */
+    public function getFirstName()
+    {
+      return $this->getValueByKey($this->response, 'family_name');
+    }
+
+    /**
+     * Get resource owner last name
+     *
+     * @return string|null
+     */
+    public function getLastName()
+    {
+      return $this->getValueByKey($this->response, 'given_name');
+    }
+
+    /**
+     * Get resource owner phone
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+      return $this->getValueByKey($this->response, 'phone_number');
+    }
+
+    /**
      * Get resource owner nickname
      *
      * @return string|null
      */
     public function getNickname()
     {
-        return $this->getValueByKey($this->response, 'login');
+        return $this->getValueByKey($this->response, 'email');
     }
 
     /**
-     * Get resource owner url
+     * Get resource owner Address
      *
-     * @return string|null
+     * @return AddressData
+     */
+    public function getAddress()
+    {
+        $addressBody = $this->getValueByKey($this->response, 'address')[0];
+
+        return new AddressData(
+            $addressBody['address_type'],
+            $addressBody['country'],
+            $addressBody['formatted'],
+            $addressBody['postal_code'],
+            $addressBody['region'],
+            $addressBody['street_address']
+        );
+    }
+
+    /**
+     * Get resource owner url. Not supported
+     *
+     * @return null
      */
     public function getUrl()
     {
-        $urlParts = array_filter([$this->domain, $this->getNickname()]);
+        return null;
+    }
 
-        return count($urlParts) ? implode('/', $urlParts) : null;
+    /**
+     * Get resource owner avatar url. Not supported
+     *
+     * @return null
+     */
+    public function getAvatarUrl()
+    {
+      return null;
     }
 
     /**
@@ -107,5 +185,15 @@ class VippsResourceOwner implements ResourceOwnerInterface
     public function toArray()
     {
         return $this->response;
+    }
+
+    /**
+     * @throws EmailNotVerifiedException
+     */
+    public function verificationGuard()
+    {
+        if(!$this->emailVerified()) {
+            throw new EmailNotVerifiedException();
+        }
     }
 }

@@ -36,31 +36,25 @@ class VippsAuthController extends OAuth2ControllerBase {
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   Used to handle metadata for redirection to authentication URL.
    */
-  public function __construct(MessengerInterface $messenger,
-                              NetworkManager $network_manager,
-                              UserAuthenticator $user_authenticator,
-                              VippsAuthManager $vipps_manager,
-                              RequestStack $request,
-                              SocialAuthDataHandler $data_handler,
-                              RendererInterface $renderer) {
-
-    parent::__construct('Social Auth Vipps', 'social_auth_vipps',
-                        $messenger, $network_manager, $user_authenticator,
-      $vipps_manager, $request, $data_handler, $renderer);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('messenger'),
-      $container->get('plugin.network.manager'),
-      $container->get('social_auth.user_authenticator'),
-      $container->get('social_auth_vipps.manager'),
-      $container->get('request_stack'),
-      $container->get('social_auth.data_handler'),
-      $container->get('renderer')
+  public function __construct(
+    MessengerInterface $messenger,
+    NetworkManager $network_manager,
+    UserAuthenticator $user_authenticator,
+    VippsAuthManager $vipps_manager,
+    RequestStack $request,
+    SocialAuthDataHandler $data_handler,
+    RendererInterface $renderer
+  ) {
+    parent::__construct(
+      'Social Auth Vipps',
+      'social_auth_vipps',
+      $messenger,
+      $network_manager,
+      $user_authenticator,
+      $vipps_manager,
+      $request,
+      $data_handler,
+      $renderer
     );
   }
 
@@ -77,23 +71,38 @@ class VippsAuthController extends OAuth2ControllerBase {
     // If authentication was successful.
     if ($profile !== NULL) {
 
+      $profile->verificationGuard();
+
       // Gets (or not) extra initial data.
       $data = $this->userAuthenticator->checkProviderIsAssociated($profile->getId()) ? NULL : $this->providerManager->getExtraDetails();
 
-      // GitHub allows the user to leave their name empty. Use nickname in that
-      // case.
-      $name = $profile->getName() ?? $profile->getNickName();
-
       // If user information could be retrieved.
-      return $this->userAuthenticator->authenticateUser($name,
-                                                        $profile->getEmail(),
-                                                        $profile->getId(),
-                                                        $this->providerManager->getAccessToken(),
-                                                        $profile->toArray()['avatar_url'],
-                                                        $data);
+      return $this->userAuthenticator->authenticateUser(
+        $profile->getNickName(),
+        $profile->getEmail(),
+        $profile->getId(),
+        $this->providerManager->getAccessToken(),
+        $profile->getAvatarUrl(),
+        $data
+      );
     }
 
     return $this->redirect('user.login');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('messenger'),
+      $container->get('plugin.network.manager'),
+      $container->get('social_auth.user_authenticator'),
+      $container->get('social_auth_vipps.manager'),
+      $container->get('request_stack'),
+      $container->get('social_auth.data_handler'),
+      $container->get('renderer')
+    );
   }
 
 }
