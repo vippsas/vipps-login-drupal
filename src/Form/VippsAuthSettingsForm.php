@@ -58,6 +58,13 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       '#description' => $this->t('Copy the Client Secret here.'),
     ];
 
+    $form['vipps_settings']['test_mode'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Test mode'),
+      '#default_value' => $config->get('test_mode'),
+      '#description' => $this->t('Send requests to the test server'),
+    ];
+
     $form['vipps_settings']['authorized_redirect_url'] = [
       '#type' => 'textfield',
       '#disabled' => TRUE,
@@ -102,6 +109,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
     $this->config('social_auth_vipps.settings')
       ->set('client_id', $values['client_id'])
       ->set('client_secret', $values['client_secret'])
+      ->set('test_mode', $values['test_mode'])
       ->set('scopes', $values['scopes'])
       ->set('endpoints', $values['endpoints'])
       ->save();

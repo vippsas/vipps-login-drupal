@@ -53,6 +53,7 @@ class VippsAuth extends NetworkBase implements VippsAuthInterface {
       $league_settings = [
         'clientId' => $settings->getClientId(),
         'clientSecret' => $settings->getClientSecret(),
+        'testMode' => $settings->getConfig()->get('test_mode'),
         'redirectUri' => Url::fromRoute('social_auth_vipps.callback')->setAbsolute()->toString(),
       ];
 

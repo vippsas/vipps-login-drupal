@@ -15,34 +15,25 @@ class Vipps extends AbstractProvider
     use BearerAuthorizationTrait;
 
     /**
-     * Domain
-     *
-     * @var string
+     * @var bool
      */
-    public $domain = 'https://apitest.vipps.no';//TODO check if test
+    protected $testMode = false;
+
+    public function __construct(array $options = [], array $collaborators = [])
+    {
+        parent::__construct($options, $collaborators);
+        $this->setOptionProvider(new VippsAuthOptionProvider());
+        $this->testMode = boolval($options['testMode']);
+    }
 
     /**
-     * Api domain
-     *
-     * @var string
-     */
-    public $apiDomain = 'https://apitest.vipps.no';//TODO check if test
-
-  public function __construct(array $options = [], array $collaborators = [])
-  {
-    parent::__construct($options, $collaborators);
-
-    $this->setOptionProvider(new VippsAuthOptionProvider());
-  }
-
-  /**
      * Get authorization url to begin OAuth flow
      *
      * @return string
      */
     public function getBaseAuthorizationUrl()
     {
-        return $this->domain . '/access-management-1.0/access/oauth2/auth';
+        return $this->getDomain() . '/access-management-1.0/access/oauth2/auth';
     }
 
     /**
@@ -54,7 +45,7 @@ class Vipps extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-      return $this->domain . '/access-management-1.0/access/oauth2/token';
+      return $this->getDomain() . '/access-management-1.0/access/oauth2/token';
     }
 
     /**
@@ -66,7 +57,7 @@ class Vipps extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return $this->domain . '/access-management-1.0/access/userinfo';
+        return $this->getDomain() . '/access-management-1.0/access/userinfo';
     }
 
     /**
@@ -112,23 +103,39 @@ class Vipps extends AbstractProvider
     {
         $user = new VippsResourceOwner($response);
 
-        return $user->setDomain($this->domain);
+        return $user->setDomain($this->getDomain());
     }
 
-  protected function getScopeSeparator()
-  {
-    return '+';
-  }
+    protected function getScopeSeparator()
+    {
+        return '+';
+    }
 
-  /**
-   * Build a query string from an array. Vipps API doesn't work with encoded url
-   *
-   * @param array $params
-   *
-   * @return string
-   */
-  protected function buildQueryString(array $params)
-  {
-    return urldecode(parent::buildQueryString($params));
-  }
+    /**
+     * Build a query string from an array. Vipps API doesn't work with encoded url
+     *
+     * @param array $params
+     *
+     * @return string
+     */
+    protected function buildQueryString(array $params)
+    {
+        return urldecode(parent::buildQueryString($params));
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isTest()
+    {
+        return $this->testMode;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDomain()
+    {
+        return sprintf("https://%s.vipps.no", $this->isTest() ? 'apitest' : 'api');
+    }
 }
