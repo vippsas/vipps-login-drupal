@@ -9,7 +9,7 @@ social_auth_vipps.redirect_to_vipps:
     no_cache: TRUE
 
 social_auth_vipps.callback:
-  path: '/vipps-login/continue-from-vipps' #TODO return later user/login/vipps/callback
+  path: '/user/login/vipps/callback'
   defaults:
     _controller: '\Drupal\social_auth_vipps\Controller\VippsAuthController::callback'
   requirements:
