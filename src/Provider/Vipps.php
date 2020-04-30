@@ -4,14 +4,11 @@ namespace Drupal\social_auth_vipps\Provider;
 
 use Drupal\social_auth_vipps\OptionProvider\VippsAuthOptionProvider;
 use Drupal\social_auth_vipps\Provider\Exception\VippsIdentityProviderException;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
-use League\OAuth2\Client\Token\AccessTokenInterface;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 use Psr\Http\Message\ResponseInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
-use UnexpectedValueException;
 
 class Vipps extends AbstractProvider
 {
@@ -69,10 +66,7 @@ class Vipps extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        if ($this->domain === 'https://github.com') {
-            return $this->apiDomain.'/user';
-        }
-        return $this->domain.'/api/v3/user';
+        return $this->domain . '/access-management-1.0/access/userinfo';
     }
 
     /**
