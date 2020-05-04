@@ -12,130 +12,130 @@ use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class Vipps extends AbstractProvider
 {
-    use BearerAuthorizationTrait;
+  use BearerAuthorizationTrait;
 
-    /**
-     * @var bool
-     */
-    protected $testMode = false;
+  /**
+   * @var bool
+   */
+  protected $testMode = false;
 
-    public function __construct(array $options = [], array $collaborators = [])
-    {
-        parent::__construct($options, $collaborators);
-        $this->setOptionProvider(new VippsAuthOptionProvider());
-        $this->testMode = boolval($options['testMode']);
+  public function __construct(array $options = [], array $collaborators = [])
+  {
+    parent::__construct($options, $collaborators);
+    $this->setOptionProvider(new VippsAuthOptionProvider());
+    $this->testMode = boolval($options['testMode']);
+  }
+
+  /**
+   * Get authorization url to begin OAuth flow
+   *
+   * @return string
+   */
+  public function getBaseAuthorizationUrl()
+  {
+    return $this->getDomain() . '/access-management-1.0/access/oauth2/auth';
+  }
+
+  /**
+   * Get access token url to retrieve token
+   *
+   * @param array $params
+   *
+   * @return string
+   */
+  public function getBaseAccessTokenUrl(array $params)
+  {
+    return $this->getDomain() . '/access-management-1.0/access/oauth2/token';
+  }
+
+  /**
+   * Get provider url to fetch user details
+   *
+   * @param AccessToken $token
+   *
+   * @return string
+   */
+  public function getResourceOwnerDetailsUrl(AccessToken $token)
+  {
+    return $this->getDomain() . '/access-management-1.0/access/userinfo';
+  }
+
+  /**
+   * Get the default scopes used by this provider.
+   *
+   * This should not be a complete list of all scopes, but the minimum
+   * required for the provider user interface!
+   *
+   * @return array
+   */
+  protected function getDefaultScopes()
+  {
+    return [];
+  }
+
+  /**
+   * Check a provider response for errors.
+   *
+   * @link   https://developer.github.com/v3/#client-errors
+   * @link   https://developer.github.com/v3/oauth/#common-errors-for-the-access-token-request
+   * @throws VippsIdentityProviderException
+   * @param ResponseInterface $response
+   * @param string $data Parsed response data
+   * @return void
+   */
+  protected function checkResponse(ResponseInterface $response, $data)
+  {
+    if ($response->getStatusCode() >= 400) {
+      throw VippsIdentityProviderException::clientException($response, $data);
+    } elseif (isset($data['error'])) {
+      throw VippsIdentityProviderException::oauthException($response, $data);
     }
+  }
 
-    /**
-     * Get authorization url to begin OAuth flow
-     *
-     * @return string
-     */
-    public function getBaseAuthorizationUrl()
-    {
-        return $this->getDomain() . '/access-management-1.0/access/oauth2/auth';
-    }
+  /**
+   * Generate a user object from a successful user details request.
+   *
+   * @param array $response
+   * @param AccessToken $token
+   * @return ResourceOwnerInterface
+   */
+  protected function createResourceOwner(array $response, AccessToken $token)
+  {
+    $user = new VippsResourceOwner($response);
 
-    /**
-     * Get access token url to retrieve token
-     *
-     * @param  array $params
-     *
-     * @return string
-     */
-    public function getBaseAccessTokenUrl(array $params)
-    {
-      return $this->getDomain() . '/access-management-1.0/access/oauth2/token';
-    }
+    return $user->setDomain($this->getDomain());
+  }
 
-    /**
-     * Get provider url to fetch user details
-     *
-     * @param  AccessToken $token
-     *
-     * @return string
-     */
-    public function getResourceOwnerDetailsUrl(AccessToken $token)
-    {
-        return $this->getDomain() . '/access-management-1.0/access/userinfo';
-    }
+  protected function getScopeSeparator()
+  {
+    return '+';
+  }
 
-    /**
-     * Get the default scopes used by this provider.
-     *
-     * This should not be a complete list of all scopes, but the minimum
-     * required for the provider user interface!
-     *
-     * @return array
-     */
-    protected function getDefaultScopes()
-    {
-        return [];
-    }
+  /**
+   * Build a query string from an array. Vipps API doesn't work with encoded url
+   *
+   * @param array $params
+   *
+   * @return string
+   */
+  protected function buildQueryString(array $params)
+  {
+    return urldecode(parent::buildQueryString($params));
+  }
 
-    /**
-     * Check a provider response for errors.
-     *
-     * @link   https://developer.github.com/v3/#client-errors
-     * @link   https://developer.github.com/v3/oauth/#common-errors-for-the-access-token-request
-     * @throws VippsIdentityProviderException
-     * @param  ResponseInterface $response
-     * @param  string $data Parsed response data
-     * @return void
-     */
-    protected function checkResponse(ResponseInterface $response, $data)
-    {
-        if ($response->getStatusCode() >= 400) {
-            throw VippsIdentityProviderException::clientException($response, $data);
-        } elseif (isset($data['error'])) {
-            throw VippsIdentityProviderException::oauthException($response, $data);
-        }
-    }
+  /**
+   * @return bool
+   */
+  protected function isTest()
+  {
+    return $this->testMode;
+  }
 
-    /**
-     * Generate a user object from a successful user details request.
-     *
-     * @param array $response
-     * @param AccessToken $token
-     * @return ResourceOwnerInterface
-     */
-    protected function createResourceOwner(array $response, AccessToken $token)
-    {
-        $user = new VippsResourceOwner($response);
-
-        return $user->setDomain($this->getDomain());
-    }
-
-    protected function getScopeSeparator()
-    {
-        return '+';
-    }
-
-    /**
-     * Build a query string from an array. Vipps API doesn't work with encoded url
-     *
-     * @param array $params
-     *
-     * @return string
-     */
-    protected function buildQueryString(array $params)
-    {
-        return urldecode(parent::buildQueryString($params));
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isTest()
-    {
-        return $this->testMode;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getDomain()
-    {
-        return sprintf("https://%s.vipps.no", $this->isTest() ? 'apitest' : 'api');
-    }
+  /**
+   * @return string
+   */
+  protected function getDomain()
+  {
+    return sprintf("https://%s.vipps.no", $this->isTest() ? 'apitest' : 'api');
+  }
 }
