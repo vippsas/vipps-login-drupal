@@ -14,8 +14,11 @@ Drupal. It is based on the Social Auth and Social API projects
 It adds to the site:
 * A new url: /user/login/vipps.
 * A settings form at /admin/config/social-api/social-auth/vipps.
+
+  <img src="https://www.drupal.org/files/social_auth_vipps_networks.png" alt="List of social auth implementations" width="auto" height="200">
 * A Vipps logo in the Social Auth Login block.
 
+  <img src="https://www.drupal.org/files/social_auth_vipps_login.png" alt="Login page with social auth block" width="300" height="auto">
 
 ## Requirements
 This module requires the following modules:
@@ -42,7 +45,11 @@ This module requires the following modules:
 ## Configuration
  * Add your Vipps project OAuth information in
    Configuration » User Authentication » Vipps.
+
+    <img src="https://www.drupal.org/files/social_auth_vipps_config.png" alt="Social auth vipps module configuration" width="400" height="auto">
  * Place a Social Auth Login block in Structure » Block Layout.
+
+    <img src="https://www.drupal.org/files/social_auth_vipps_block.png" alt="Social auth block configuration" width="400" height="auto">
  * If you already have a Social Auth Login block in the site, rebuild the cache.
 
 
