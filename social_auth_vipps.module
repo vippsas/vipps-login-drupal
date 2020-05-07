@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use \Drupal\Core\Form\FormStateInterface;
+use \Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Url;
+use Drupal\social_auth_vipps\Form\VippsAuthSettingsForm;
 
 /**
  * Implements hook_help().
@@ -24,4 +28,35 @@ function social_auth_vipps_help($route_name, RouteMatchInterface $route_match) {
   }
 
   return $output;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function social_auth_vipps_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id === 'user_login_form') {
+    showLoginWithVippsButton($form, $form_state);
+  }
+}
+
+function showLoginWithVippsButton(&$form, FormStateInterface $form_state) {
+  /* @var $configFactory ConfigFactoryInterface  */
+  $configFactory = Drupal::service('config.factory');
+  $config = $configFactory->get(VippsAuthSettingsForm::SETTINGS);
+
+  if(boolval($config->get('show_in_login_form'))) {
+
+    $form['login_with_vipps_button'] = [
+      '#type' => 'item',
+      '#markup' => sprintf("<div class='vipps-button-group'><a href='%s' class='%s' id = '%s'>%s</a></div>",
+        Url::fromRoute('social_auth_vipps.redirect_to_vipps')->toString(),
+        'login-with-vipps-link',
+        'login-with-vipps-link',
+        t('Login with Vipps')
+      ),
+      '#weight' => -1,
+    ];
+
+    $form['#attached']['library']['social_auth_vipps/social_auth_vipps'] = 'social_auth_vipps/social_auth_vipps';
+  }
 }

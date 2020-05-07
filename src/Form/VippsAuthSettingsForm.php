@@ -11,6 +11,8 @@ use Drupal\social_auth\Form\SocialAuthSettingsForm;
  */
 class VippsAuthSettingsForm extends SocialAuthSettingsForm {
 
+  const SETTINGS = 'social_auth_vipps.settings';
+
   /**
    * {@inheritdoc}
    */
@@ -24,7 +26,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
   protected function getEditableConfigNames() {
     return array_merge(
       parent::getEditableConfigNames(),
-      ['social_auth_vipps.settings']
+      [self::SETTINGS]
     );
   }
 
@@ -63,6 +65,13 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       '#title' => $this->t('Test mode'),
       '#default_value' => $config->get('test_mode'),
       '#description' => $this->t('Send requests to the test server'),
+    ];
+
+    $form['vipps_settings']['show_in_login_form'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Show in login form'),
+      '#default_value' => $config->get('show_in_login_form'),
+      '#description' => $this->t("Show button 'Login with Vipps' in the login form"),
     ];
 
     $form['vipps_settings']['authorized_redirect_url'] = [
@@ -110,6 +119,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       ->set('client_id', $values['client_id'])
       ->set('client_secret', $values['client_secret'])
       ->set('test_mode', $values['test_mode'])
+      ->set('show_in_login_form', $values['show_in_login_form'])
       ->set('scopes', $values['scopes'])
       ->set('endpoints', $values['endpoints'])
       ->save();

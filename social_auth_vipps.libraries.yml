@@ -1,0 +1,5 @@
+social_auth_vipps:
+  version: VERSION
+  css:
+    theme:
+      lib/common.css: {}
