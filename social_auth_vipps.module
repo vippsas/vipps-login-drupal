@@ -35,11 +35,11 @@ function social_auth_vipps_help($route_name, RouteMatchInterface $route_match) {
  */
 function social_auth_vipps_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if($form_id === 'user_login_form') {
-    showLoginWithVippsButton($form, $form_state);
+    showVippsLoginButton($form, $form_state);
   }
 }
 
-function showLoginWithVippsButton(&$form, FormStateInterface $form_state) {
+function showVippsLoginButton(&$form, FormStateInterface $form_state) {
   /* @var $configFactory ConfigFactoryInterface  */
   $configFactory = Drupal::service('config.factory');
   $config = $configFactory->get(VippsAuthSettingsForm::SETTINGS);
