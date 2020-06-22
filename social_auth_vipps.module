@@ -20,10 +20,6 @@ function social_auth_vipps_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     case 'social_auth_vipps.settings_form':
       $output = '<h3>' . t('Configuration instructions') . '</h3>';
-      $output .= '<p>';
-      $output .= t('Configuration instructions and other useful documentation can be found at the <a href="@doc-url">Social Auth Vipps documentation</a>.',
-          ['@doc-url' => 'https://www.drupal.org/docs/8/modules/social-api/social-api-2x/social-auth-2x/installing-social-auth-2x']);
-      $output .= '</p>';
       break;
   }
 
