@@ -40,12 +40,13 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       '#type' => 'details',
       '#title' => $this->t('Vipps Client settings'),
       '#open' => TRUE,
+      '#weight' => 0,
       '#description' => $this->t('You need to first create a Vipps App at <a href="@github-dev">@github-dev</a>',
         ['@github-dev' => 'https://portal.vipps.no']),
     ];
 
     $form['vipps_settings']['client_id'] = [
-      '#type' => 'password',
+      '#type' => 'textfield',
       '#required' => TRUE,
       '#title' => $this->t('Client ID'),
       '#default_value' => $config->get('client_id'),
@@ -53,7 +54,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
     ];
 
     $form['vipps_settings']['client_secret'] = [
-      '#type' => 'password',
+      '#type' => 'textfield',
       '#required' => TRUE,
       '#title' => $this->t('Client Secret'),
       '#default_value' => $config->get('client_secret'),
@@ -107,6 +108,20 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
                                   /user/repos|user_repos'),
     ];
 
+    $form['other_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Other settings'),
+      '#open' => FALSE,
+      '#weight' => 3,
+    ];
+
+    $form['other_settings']['clear_cache'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Clear cache'),
+      '#default_value' => $config->get('clear_cache') ?? true,
+      '#description' => $this->t('Clear the cache after saving configuration'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -115,6 +130,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
+
     $this->config('social_auth_vipps.settings')
       ->set('client_id', $values['client_id'])
       ->set('client_secret', $values['client_secret'])
@@ -122,7 +138,12 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       ->set('show_in_login_form', $values['show_in_login_form'])
       ->set('scopes', $values['scopes'])
       ->set('endpoints', $values['endpoints'])
+      ->set('clear_cache', $values['clear_cache'])
       ->save();
+
+    if(boolval($values['clear_cache'])) {
+      drupal_flush_all_caches();
+    }
 
     parent::submitForm($form, $form_state);
   }
