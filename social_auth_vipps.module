@@ -52,7 +52,7 @@ function showVippsLoginButton(&$form, FormStateInterface $form_state) {
         Url::fromRoute('social_auth_vipps.redirect_to_vipps')->toString(),
         'login-with-vipps-link',
         'login-with-vipps-link',
-        t('Login with Vipps')
+        t('Logg inn med Vipps')
       ),
       '#weight' => -1,
     ];

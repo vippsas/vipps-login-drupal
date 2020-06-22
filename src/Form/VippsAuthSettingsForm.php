@@ -45,7 +45,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
     ];
 
     $form['vipps_settings']['client_id'] = [
-      '#type' => 'textfield',
+      '#type' => 'password',
       '#required' => TRUE,
       '#title' => $this->t('Client ID'),
       '#default_value' => $config->get('client_id'),
@@ -53,7 +53,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
     ];
 
     $form['vipps_settings']['client_secret'] = [
-      '#type' => 'textfield',
+      '#type' => 'password',
       '#required' => TRUE,
       '#title' => $this->t('Client Secret'),
       '#default_value' => $config->get('client_secret'),
@@ -71,7 +71,7 @@ class VippsAuthSettingsForm extends SocialAuthSettingsForm {
       '#type' => 'checkbox',
       '#title' => $this->t('Show in login form'),
       '#default_value' => $config->get('show_in_login_form'),
-      '#description' => $this->t("Show button 'Login with Vipps' in the login form"),
+      '#description' => $this->t("Show button 'Logg inn med Vipps' in the login form"),
     ];
 
     $form['vipps_settings']['authorized_redirect_url'] = [
