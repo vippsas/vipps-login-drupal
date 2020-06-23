@@ -24,9 +24,6 @@ The module adds two things:
 <img src="https://www.drupal.org/files/social_auth_vipps_login.png" alt="Login page with social auth block" width="300" height="auto">
 
 See how it works in this video:
-
-<iframe src="https://player.vimeo.com/video/419856996" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
 [![See how it works in this video](https://i.imgur.com/7OmBJjM.png)](https://player.vimeo.com/video/419856996)
 
 ## Requirements
