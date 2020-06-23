@@ -1,77 +1,83 @@
-### Contents of this file
- * [_Introduction_](#introduction)
- * [ Requirements ](#requirements)
- * [_Getting started_](#getting-started)
- * [_Installation_](#installation)
- * [_Configuration_](#configuration)
- * [_How it works_](#how-it-works)
- * [_Support requests_](#support-requests)
+# Vipps Login for Drupal
+
+## Table of contents
+
+* [ Introduction ](#introduction)
+* [ Requirements ](#requirements)
+* [ Getting started ](#getting-started)
+* [ Installation ](#installation)
+* [ Configuration](#configuration)
+* [ How it works ](#how-it-works)
+* [ Frequently Asked Questions ](#frequently-asked-questions)
 
 ## Introduction
-Social Auth Vipps is a Vipps authentication integration for
-Drupal. It is based on the Social Auth and Social API projects
+*This project is based on [[Social API](https://www.drupal.org/project/social_api)](https://www.drupal.org/project/social_api) and [[Social Auth](https://www.drupal.org/project/social_auth)](https://www.drupal.org/project/social_auth).*
 
-It adds to the site:
-* A new url: /user/login/vipps.
-* A settings form at /admin/config/social-api/social-auth/vipps.
+The module lets you login to Drupal using the Vipps app. It’s a secure and reliable way to handle user authentication.
 
-  <img src="https://www.drupal.org/files/social_auth_vipps_networks.png" alt="List of social auth implementations" width="auto" height="200">
-* A Vipps logo in the Social Auth Login block.
+The module adds two things:
 
-  <img src="https://www.drupal.org/files/social_auth_vipps_login.png" alt="Login page with social auth block" width="300" height="auto">
+* An alternative URL for login: /user/login/vipps
+
+* A button that can be positioned as a block or as part of the standard login form
+
+<img src="https://www.drupal.org/files/social_auth_vipps_login.png" alt="Login page with social auth block" width="300" height="auto">
+
+See how it works in this video:
+
+<iframe src="https://player.vimeo.com/video/419856996" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
 
 ## Requirements
-This module requires the following modules:
- * Social Auth (https://drupal.org/project/social_auth)
- * Social API (https://drupal.org/project/social_api)
- * Working Vipps account (see below)
+
+* Drupal 8.x
+* Composer
+* [Social API]([https://www.drupal.org/project/](https://www.drupal.org/project/advancedqueue)social_api)
+* [Social Auth]([https://www.drupal.org/project/](https://www.drupal.org/project/commerce)social_auth)
+* Working Vipps account (see below)
 
 ## Getting started
-* Sign up to use (Vipps på Nett)
+
+* Sign up to use ([Vipps på Nett](https://www.vipps.no/signup/vippspanett/))
 * After 1-2 days you will get an email with login details to Vipps Developer Portal. This is where you can retrieve the API credentials used to configure the module in Drupal.
 * Proceed to "Installation" below
 
-## Installation
- * Run composer to install the dependencies.
-   composer require "drupal/social_auth_vipps:^2.0"
- * Install the dependencies: Social API and Social Auth.
- * Install as you would normally install a contributed Drupal module. See:
-   https://drupal.org/documentation/install/modules-themes/modules-8
-   for further information.
- * A more comprehensive installation instruction for Drupal 8 can be found at
-   https://www.drupal.org/docs/8/modules/social-api/social-api-2x/social-auth-2x/installing-social-auth-2x
+### Installation
+
+* Install dependencies
+* Install the module
+
+If you install the module using Composer, the dependencies will be added automatically:
+
+`composer require "drupal/social_auth_vipps"`
 
 
-## Configuration
- * Add your Vipps project OAuth information in
-   Configuration » User Authentication » Vipps.
+### Configuration
 
-    <img src="https://www.drupal.org/files/social_auth_vipps_config.png" alt="Social auth vipps module configuration" width="400" height="auto">
- * Place a Social Auth Login block in Structure » Block Layout.
+* Add your Vipps project OAuth information in
+Configuration » User Authentication » Vipps.
 
-    <img src="https://www.drupal.org/files/social_auth_vipps_block.png" alt="Social auth block configuration" width="400" height="auto">
- * If you already have a Social Auth Login block in the site, rebuild the cache.
+<img src="https://www.drupal.org/files/social_auth_vipps_config.png" alt="Social auth vipps module configuration" width="400" height="auto">
+
+* Place a Social Auth Login block in Structure » Block Layout.
+
+<img src="https://www.drupal.org/files/social_auth_vipps_block.png" alt="Social auth block configuration" width="400" height="auto">
+
+* OR: Click “Show in login form”
+
+* If you already have a Social Auth Login block on the site, rebuild the cache
 
 
 ## How it works
-The user can click on the Vipps logo in the Social Auth Login block.
-You can also add a button or link anywhere on the site that points
-to /user/login/vipps, so theming and customizing the button or link
-is very flexible.
 
-After Vipps has returned the user to your site, the module compares the
-user id or email address provided by Vipps. If the user has previously
-registered using Vipps or your site already has an account with the same
-email address, the user is logged in. If not, a new user account is created.
-Also, a Vipps account can be associated with an authenticated user.
+The user can click on the Vipps logo in the Social Auth Login block. You can also add a button or link anywhere on the site that points to /user/login/vipps, so theming and customizing the button or link is very easy.
 
+After Vipps has returned the user to your site, the module compares the user id or email address provided by Vipps. If the user has previously registered using Vipps or your site already has an account with the same email address, the user is logged in. If not, a new user account is created. Also, a Vipps account can be associated with an authenticated user by matching the email address.
 
-## Support requests
-* Before posting a support request, carefully read the installation
-  instructions provided in module documentation page.
-* Before posting a support request, check the Recent Log entries at
-  admin/reports/dblog
-* Once you have done this, you can post a support request at module issue
-  queue: https://www.drupal.org/project/issues/social_auth_vipps
-* When posting a support request, please inform if you were able to see any
-  errors in the Recent Log entries.
+## Frequently Asked Questions
+
+### How can I get help with the module?
+First, check out the documentation pages for the module on Drupal.org. If you still have issues, please create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps) for the module. Before posting a support request, please check the Recent Log entries at admin/reports/dblog.
+
+### Where can I use Vipps?
+Vipps is only available in Norway at the moment and only users who have the Vipps app installed will be able to log in with Vipps.
