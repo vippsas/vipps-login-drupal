@@ -11,7 +11,7 @@
 * [ Frequently Asked Questions ](#frequently-asked-questions)
 
 ## Introduction
-*This project is based on [[Social API](https://www.drupal.org/project/social_api)](https://www.drupal.org/project/social_api) and [[Social Auth](https://www.drupal.org/project/social_auth)](https://www.drupal.org/project/social_auth).*
+*This project is based on [Social API](https://www.drupal.org/project/social_api) and [Social Auth](https://www.drupal.org/project/social_auth).
 
 The module lets you login to Drupal using the Vipps app. It’s a secure and reliable way to handle user authentication.
 
@@ -27,6 +27,7 @@ See how it works in this video:
 
 <iframe src="https://player.vimeo.com/video/419856996" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
+[![See how it works in this video](https://i.imgur.com/7OmBJjM.png)](https://player.vimeo.com/video/419856996)
 
 ## Requirements
 
