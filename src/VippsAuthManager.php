@@ -54,7 +54,7 @@ class VippsAuthManager extends OAuth2Manager {
    */
   public function getAuthorizationUrl() {
 
-    $scopes = ['openid', 'address', 'email', 'name', 'phoneNumber'];
+    $scopes = ['openid', 'address', 'email', 'name', 'phoneNumber', 'api_version_2'];
 
     $extra_scopes = $this->getScopes();
     if ($extra_scopes) {
@@ -64,6 +64,7 @@ class VippsAuthManager extends OAuth2Manager {
     // Returns the URL where user will be redirected.
     return $this->client->getAuthorizationUrl([
       'scope' => $scopes,
+      'requested_flow' => 'automatic_return_from_vipps_app',
     ]);
   }
 

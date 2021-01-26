@@ -4,3 +4,9 @@ services:
     arguments:
       - '@config.factory'
       - '@logger.factory'
+
+  social_auth_vipps.event_subscriber:
+    class: Drupal\social_auth_vipps\EventSubscriber\CallbackEventSubscriber
+    arguments: ['@request_stack', '@messenger']
+    tags:
+      - { name: event_subscriber }

@@ -46,13 +46,16 @@ function showVippsLoginButton(&$form, FormStateInterface $form_state) {
 
   if(boolval($config->get('show_in_login_form'))) {
 
+    $config = \Drupal::configFactory()->getEditable('social_auth.settings');
+    $btnImg = '/' . $config->get('log_in_with_vipps_btn');
+
     $form['login_with_vipps_button'] = [
       '#type' => 'item',
-      '#markup' => sprintf("<div class='vipps-button-group'><a href='%s' class='%s' id = '%s'>%s</a></div>",
+      '#markup' => sprintf("<div class='vipps-button-group'><a href='%s' class='%s' id = '%s'><img src='%s' alt=''></a></div>",
         Url::fromRoute('social_auth_vipps.redirect_to_vipps')->toString(),
         'login-with-vipps-link',
         'login-with-vipps-link',
-        t('Logg inn med Vipps')
+        $btnImg
       ),
       '#weight' => -1,
     ];

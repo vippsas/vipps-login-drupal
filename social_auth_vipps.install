@@ -12,6 +12,10 @@ use Drupal\social_auth\Controller\SocialAuthController;
  */
 function social_auth_vipps_install() {
   SocialAuthController::setLoginButtonSettings('social_auth_vipps', 'social_auth_vipps.redirect_to_vipps', 'img/vipps_logo.png');
+
+  $config = \Drupal::configFactory()->getEditable('social_auth.settings');
+  $imgPath = drupal_get_path('module', 'social_auth_vipps') . '/img/log_in_with_vipps_btn.svg';
+  $config->set('log_in_with_vipps_btn', $imgPath)->save();
 }
 
 /**
