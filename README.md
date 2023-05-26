@@ -31,8 +31,8 @@ See how it works in this video:
 
 * Drupal 8.x
 * Composer
-* [Social API]([https://www.drupal.org/project/](https://www.drupal.org/project/advancedqueue)social_api)
-* [Social Auth]([https://www.drupal.org/project/](https://www.drupal.org/project/commerce)social_auth)
+* [Social API](https://www.drupal.org/project/social_api)
+* [Social Auth](https://www.drupal.org/project/social_auth)
 * Working Vipps account (see below)
 
 ## Getting started
