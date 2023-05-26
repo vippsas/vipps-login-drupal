@@ -12,7 +12,7 @@
 
 ## Introduction
 
-*This project is based on [Social API](https://www.drupal.org/project/social_api) and [Social Auth](https://www.drupal.org/project/social_auth).
+This project is based on [Social API](https://www.drupal.org/project/social_api) and [Social Auth](https://www.drupal.org/project/social_auth).
 
 The module lets you log in to Drupal using the Vipps app. It's a secure and reliable way to handle user authentication.
 
@@ -27,6 +27,8 @@ The module adds two things:
 See how it works in this video:
 [![See how it works in this video](https://i.imgur.com/7OmBJjM.png)](https://player.vimeo.com/video/419856996)
 
+Additional information is available on [GitHub](https://github.com/vippsas/vipps-login-drupal).
+
 ## Requirements
 
 * Drupal 8.x
@@ -37,7 +39,7 @@ See how it works in this video:
 
 ## Getting started
 
-* Sign up to use ([Vipps på Nett](https://www.vipps.no/signup/vippspanett/)).
+* Sign up to use [Vipps på Nett](https://www.vipps.no/signup/vippspanett/).
 * After 1-2 days you will get an email with login details to Vipps Developer Portal. This is where you can retrieve the API credentials used to configure the module in Drupal.
 * Proceed to [Installation](#installation) below.
 
