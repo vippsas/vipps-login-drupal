@@ -1,5 +1,9 @@
 # Vipps Login for Drupal
 
+<!-- START_COMMENT -->
+💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/vipps-plugins/). 💥
+<!-- END_COMMENT -->
+
 ## Table of contents
 
 * [Introduction](#introduction)
