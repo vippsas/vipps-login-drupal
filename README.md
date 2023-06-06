@@ -1,20 +1,19 @@
+<!-- START_METADATA
+---
+title: Vipps Login for Drupal plugin
+sidebar_position: 1
+pagination_next: null
+pagination_prev: null
+---
+END_METADATA -->
+
 # Vipps Login for Drupal
 
 <!-- START_COMMENT -->
 💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/vipps-plugins/). 💥
 <!-- END_COMMENT -->
 
-## Table of contents
-
-* [Introduction](#introduction)
-* [Requirements](#requirements)
-* [Getting started](#getting-started)
-* [Installation](#installation)
-* [Configuration](#configuration)
-* [How it works](#how-it-works)
-* [Frequently Asked Questions](#frequently-asked-questions)
-
-## Introduction
+This module is hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).
 
 This project is based on [Social API](https://www.drupal.org/project/social_api) and [Social Auth](https://www.drupal.org/project/social_auth).
 
@@ -31,7 +30,6 @@ The module adds two things:
 See how it works in this video:
 [![See how it works in this video](https://i.imgur.com/7OmBJjM.png)](https://player.vimeo.com/video/419856996)
 
-Additional information is available on [GitHub](https://github.com/vippsas/vipps-login-drupal).
 
 ## Requirements
 
@@ -65,9 +63,7 @@ If you install the module using Composer, the dependencies will be added automat
 
 * Place a *Social Auth Login* block in *Structure* > *Block Layout*.
 
-
 ![Social auth block configuration](https://www.drupal.org/files/social_auth_vipps_block.png)
-
 
 * OR: Click *Show in login form*
 
@@ -83,7 +79,8 @@ After Vipps has returned the user to your site, the module compares the user ID 
 
 ### How can I get help with the module?
 
-First, check out the documentation pages for the module on Drupal.org. If you still have issues, please create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps) for the module. Before posting a support request, please check the Recent Log entries at admin/reports/dblog.
+First, check out the documentation pages for the module on Drupal.org. If you still have issues,
+please create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps) for the module. Before posting a support request, please check the *Recent Log* entries at `admin/reports/dblog`.
 
 ### Where can I use Vipps?
 
