@@ -11,6 +11,19 @@ END_METADATA -->
 
 <!-- START_COMMENT -->
 💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/vipps-plugins/). 💥
+
+## Table of contents
+
+* [Introduction](#introduction)
+* [Requirements](#requirements)
+* [Getting started](#getting-started)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [How it works](#how-it-works)
+* [Frequently Asked Questions](#frequently-asked-questions)
+
+## Introduction
+
 <!-- END_COMMENT -->
 
 This module is hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).
