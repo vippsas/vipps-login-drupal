@@ -9,7 +9,10 @@ END_METADATA -->
 
 # Vipps Login for Drupal
 
-*This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).*
+[![Support and development by Frontkom](./docs/images/frontkom.svg#gh-light-mode-only)![Support and development by Frontkom](./docs/images/frontkom.svg#gh-dark-mode-only)](https://frontkom.com/)
+
+
+*This plugin is hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).*
 
 <!-- START_COMMENT -->
 💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/plugins/). 💥
