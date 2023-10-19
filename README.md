@@ -11,10 +11,14 @@ END_METADATA -->
 
 ![Support and development by Frontkom ](./docs/images/frontkom.svg#gh-light-mode-only)![Support and development by Frontkom](./docs/images/frontkom_dark.svg#gh-dark-mode-only)
 
+![Vipps](./docs/images/vipps.png) *Available for Vipps.*
+
+![MobilePay](./docs/images/mp.png) *Availability for MobilePay has not yet been determined.*
+
 *This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).*
 
 <!-- START_COMMENT -->
-💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/plugins/). 💥
+💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/plugins-ext/login-drupal/). 💥
 
 ## Table of contents
 
