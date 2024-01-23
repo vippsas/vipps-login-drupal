@@ -60,8 +60,8 @@ See how it works in this video:
 
 ## Getting started
 
-* Sign up to use [Vipps på Nett](https://www.vipps.no/signup/vippspanett/).
-* After 1-2 days, you will get an email with login details to Vipps MobilePay Merchant Portal, [portal.vippsmobilepay.com](https://portal.vippsmobilepay.com/). This is where you can retrieve the API credentials used to configure the module in Drupal.
+* Sign up to use [*Payment Integration*](https://vippsmobilepay.com/online/payment-integration).
+* After 1-2 days, you will get an email with login details to the Merchant Portal, [portal.vippsmobilepay.com](https://portal.vippsmobilepay.com/). This is where you can retrieve the API credentials used to configure the module in Drupal.
 * Proceed to [Installation](#installation) below.
 
 ### Installation
