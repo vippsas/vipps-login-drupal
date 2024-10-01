@@ -16,7 +16,8 @@ END_METADATA -->
 
 ![MobilePay](./docs/images/mp.png) *Availability for MobilePay has not yet been determined.*
 
-*This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).*
+*This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).
+For support, create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps).*
 
 <!-- START_COMMENT -->
 💥 Please use the plugin pages on [https://developer.vippsmobilepay.com](https://developer.vippsmobilepay.com/docs/plugins-ext/login-drupal/). 💥
@@ -99,9 +100,13 @@ After Vipps has returned the user to your site, the module compares the user ID 
 
 ### How can I get help with the module?
 
-First, check out the documentation pages for the module on Drupal.org. If you still have issues,
-please create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps) for the module. Before posting a support request, please check the *Recent Log* entries at `admin/reports/dblog`.
+See [Support](#support).
 
 ### Where can I use Vipps?
 
 Vipps is only available in Norway at the moment and only users who have the Vipps app installed will be able to log in with Vipps.
+
+## Support
+
+Check out the [documentation pages for the module on Drupal.org](https://www.drupal.org/project/social_auth_vipps). If you still have issues,
+please create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps) for the module. Before posting a support request, please check the *Recent Log* entries at `admin/reports/dblog`.
