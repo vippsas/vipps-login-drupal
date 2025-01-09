@@ -12,9 +12,7 @@ END_METADATA -->
 
 ![Support and development by Frontkom ](./docs/images/frontkom.svg#gh-light-mode-only)![Support and development by Frontkom](./docs/images/frontkom_dark.svg#gh-dark-mode-only)
 
-![Vipps](./docs/images/vipps.png) *Available for Vipps.*
-
-![MobilePay](./docs/images/mp.png) *Availability for MobilePay has not yet been determined.*
+![null](./docs/images/vipps.png) *Only available for Vipps.*
 
 *This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).
 For support, create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps).*
