@@ -12,7 +12,7 @@ END_METADATA -->
 
 ![Support and development by Frontkom ](./docs/images/frontkom.svg#gh-light-mode-only)![Support and development by Frontkom](./docs/images/frontkom_dark.svg#gh-dark-mode-only)
 
-![null](./docs/images/vipps.png) *Only available for Vipps.*
+![Vipps icon](./docs/images/vipps.png) *Only available for Vipps.*
 
 *This plugin is built and maintained by [Frontkom](https://frontkom.com/) and hosted on [GitHub](https://github.com/vippsas/vipps-login-drupal).
 For support, create an issue in the [issue queue](https://www.drupal.org/project/issues/social_auth_vipps).*
