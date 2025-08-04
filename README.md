@@ -47,7 +47,6 @@ The module adds two things:
 See how it works in this video:
 [![See how it works in this video](https://i.imgur.com/7OmBJjM.png)](https://player.vimeo.com/video/419856996)
 
-
 ## Requirements
 
 * Drupal 8.x
@@ -59,7 +58,7 @@ See how it works in this video:
 ## Getting started
 
 * Sign up to use [*Payment Integration*](https://vippsmobilepay.com/online/payment-integration).
-* After 1-2 days, you will get an email with login details to the Merchant Portal, [portal.vippsmobilepay.com](https://portal.vippsmobilepay.com/). This is where you can retrieve the API credentials used to configure the module in Drupal.
+* After 1–2 days, you will get an email with login details to the Merchant Portal, [portal.vippsmobilepay.com](https://portal.vippsmobilepay.com/). This is where you can retrieve the API credentials used to configure the module in Drupal.
 * Proceed to [Installation](#installation) below.
 
 ### Installation
@@ -92,7 +91,7 @@ The user can click on the Vipps logo in the *Social Auth Login* block. You can a
 
 After Vipps has returned the user to your site, the module compares the user ID or email address provided by Vipps. If the user has previously registered using Vipps or your site already has an account with the same email address, the user is logged in. If not, a new user account is created. Also, a Vipps account can be associated with an authenticated user by matching the email address.
 
-## Frequently Asked Questions
+## Frequently asked questions
 
 ### How can I get help with the module?
 
